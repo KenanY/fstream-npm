@@ -49,7 +49,7 @@ function Packer (props) {
     // in a user-writable state, even if they're
     // being installed from some wackey vm-mounted
     // read-only filesystem.
-    entry.mode = props.mode = props.mode | 0200
+    entry.mode = props.mode = props.mode | parseInt('0200', 8)
   })
 }
 
