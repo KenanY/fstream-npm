@@ -135,7 +135,6 @@ Packer.prototype.applyIgnores = function (entry, partial, entryObj) {
     // stuff like symlinks and .cmd files anyway.
     if (entry === '.bin') return false
 
-    var shouldBundle = false
     // the package root.
     var p = this.parent
     // the package before this one.
