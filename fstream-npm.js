@@ -68,7 +68,10 @@ Packer.prototype.readBundledLinks = function () {
     var errState = null
     var then = function then (er) {
       if (errState) return
-      if (er) return errState = er, this.resume()
+      if (er) {
+        errState = er
+        return this.resume()
+      }
       if (-- l === 0) return this.resume()
     }.bind(this)
 
