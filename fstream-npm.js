@@ -1,7 +1,7 @@
 var Ignore = require('fstream-ignore')
-, inherits = require('inherits')
-, path = require('path')
-, fs = require('fs')
+var inherits = require('inherits')
+var path = require('path')
+var fs = require('fs')
 
 module.exports = Packer
 
@@ -67,7 +67,7 @@ Packer.prototype.readBundledLinks = function () {
     if (er || l === 0) return this.resume()
 
     var errState = null
-    , then = function then (er) {
+    var then = function then (er) {
       if (errState) return
       if (er) return errState = er, this.resume()
       if (-- l === 0) return this.resume()
@@ -243,14 +243,15 @@ Packer.prototype.getChildProps = function (stat) {
 }
 
 
-var order =
-  [ 'package.json'
-  , '.npmignore'
-  , '.gitignore'
-  , /^README(\.md)?$/
-  , 'LICENCE'
-  , 'LICENSE'
-  , /\.js$/ ]
+var order = [
+  'package.json',
+  '.npmignore',
+  '.gitignore',
+  /^README(\.md)?$/,
+  'LICENCE',
+  'LICENSE',
+  /\.js$/
+]
 
 Packer.prototype.sort = function (a, b) {
   for (var i = 0, l = order.length; i < l; i ++) {
@@ -303,8 +304,8 @@ Packer.prototype.emitEntry = function (entry) {
   if (entry.type !== 'Directory') {
     // make it so that the folder in the tarball is named "package"
     var h = path.dirname((entry.root || entry).path)
-    , t = entry.path.substr(h.length + 1).replace(/^[^\/\\]+/, 'package')
-    , p = h + "/" + t
+    var t = entry.path.substr(h.length + 1).replace(/^[^\/\\]+/, 'package')
+    var p = h + "/" + t
 
     entry.path = p
     entry.dirname = path.dirname(p)
