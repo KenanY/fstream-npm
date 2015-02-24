@@ -44,7 +44,6 @@ function Packer (props) {
     this.readBundledLinks()
   }
 
-
   this.on('entryStat', function (entry, props) {
     // files should *always* get into tarballs
     // in a user-writable state, even if they're
@@ -181,7 +180,6 @@ Packer.prototype.addIgnoreFiles = function () {
   Ignore.prototype.addIgnoreFiles.call(this)
 }
 
-
 Packer.prototype.readRules = function (buf, e) {
   if (e !== 'package.json') {
     return Ignore.prototype.readRules.call(this, buf, e)
@@ -242,7 +240,6 @@ Packer.prototype.getChildProps = function (stat) {
   return props
 }
 
-
 var order = [
   'package.json',
   '.npmignore',
@@ -271,8 +268,6 @@ Packer.prototype.sort = function (a, b) {
 
   return Ignore.prototype.sort.call(this, a, b)
 }
-
-
 
 Packer.prototype.emitEntry = function (entry) {
   if (this._paused) {
@@ -305,7 +300,7 @@ Packer.prototype.emitEntry = function (entry) {
     // make it so that the folder in the tarball is named "package"
     var h = path.dirname((entry.root || entry).path)
     var t = entry.path.substr(h.length + 1).replace(/^[^\/\\]+/, 'package')
-    var p = h + "/" + t
+    var p = h + '/' + t
 
     entry.path = p
     entry.dirname = path.dirname(p)
