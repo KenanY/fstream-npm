@@ -171,7 +171,7 @@ Packer.prototype.addIgnoreFiles = function () {
   var entries = this.entries
   // if there's a .npmignore, then we do *not* want to
   // read the .gitignore.
-  if (-1 !== entries.indexOf('.npmignore')) {
+  if (entries.indexOf('.npmignore') !== -1) {
     var i = entries.indexOf('.gitignore')
     if (i !== -1) {
       entries.splice(i, 1)
