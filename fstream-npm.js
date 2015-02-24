@@ -72,7 +72,7 @@ Packer.prototype.readBundledLinks = function () {
         errState = er
         return this.resume()
       }
-      if (-- l === 0) return this.resume()
+      if (--l === 0) return this.resume()
     }.bind(this)
 
     list.forEach(function (pkg) {
@@ -254,7 +254,7 @@ var order = [
 ]
 
 Packer.prototype.sort = function (a, b) {
-  for (var i = 0, l = order.length; i < l; i ++) {
+  for (var i = 0, l = order.length; i < l; i++) {
     var o = order[i]
     if (typeof o === 'string') {
       if (a === o) return -1
